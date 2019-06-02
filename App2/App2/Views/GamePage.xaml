@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App2.Views.GamePage"
+             xmlns:vm="clr-namespace:App2.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:GameViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="playButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#eee"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="HeightRequest" Value="100" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="10" ColumnSpacing="10" BackgroundColor="#04897c" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="3" Padding="10">
+                    <Label Text="Play" FontSize="48" HorizontalTextAlignment="Center" />
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="0">
+                    <Button Command="{Binding Play}" CommandParameter="0" Text="{Binding Tiles[0].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[0].Enabled}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Button Command="{Binding Play}" CommandParameter="1" Text="{Binding Tiles[1].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[1].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="2">
+                    <Button Command="{Binding Play}" CommandParameter="2" Text="{Binding Tiles[2].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[2].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.Column="0">
+                    <Button Command="{Binding Play}" CommandParameter="3" Text="{Binding Tiles[3].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[3].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.Column="1">
+                    <Button Command="{Binding Play}" CommandParameter="4" Text="{Binding Tiles[4].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[4].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.Column="2">
+                    <Button Command="{Binding Play}" CommandParameter="5" Text="{Binding Tiles[5].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[5].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.Column="0">
+                    <Button Command="{Binding Play}" CommandParameter="6" Text="{Binding Tiles[6].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[6].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.Column="1">
+                    <Button Command="{Binding Play}" CommandParameter="7" Text="{Binding Tiles[7].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[7].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.Column="2">
+                    <Button Command="{Binding Play}" CommandParameter="8" Text="{Binding Tiles[8].PlayedBy}" Style="{StaticResource playButton}" IsEnabled="{Binding Title[8].Enabled}" />
+                </StackLayout>
+                <StackLayout Grid.Row="4" Grid.ColumnSpan="3" Margin="0,30" >
+                    <Button Text="Reset" Command="{Binding Reset}" Padding="10" FontSize="24" BackgroundColor="#fbd875" />
+                </StackLayout>
+                <StackLayout Grid.RowSpan="5" Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding ShowResult}" >
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Result}" FontSize="50" BackgroundColor="#04897c" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
